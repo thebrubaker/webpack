@@ -1,7 +1,9 @@
+require('dotenv').config()
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var webpack = require("webpack")
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -27,6 +29,29 @@ module.exports = {
       '@': resolve('src')
     }
   },
+  alias: {
+    'app': resolve('src/bootstrap/app'),
+    'assets': resolve('src/assets'),
+    'bootstrap': resolve('src/bootstrap'),
+    'drivers': resolve('src/app/drivers'),
+    'components': resolve('src/components'),
+    'layouts': resolve('src/components/layouts'),
+    'pages': resolve('src/pages'),
+    'services': resolve('src/app/services'),
+    'src': resolve('src'),
+    'store': resolve('src/store'),
+    'routes': resolve('src/routes'),
+    'utilities': resolve('src/utilities'),
+    'vue$': 'vue/dist/vue.esm.js'
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      'app': resolve('src/bootstrap/app'),
+      'error': resolve('src/utilities/error'),
+      'env': resolve('src/utilities/env'),
+      'process.env': resolve('.env.json')
+    })
+  ],
   module: {
     rules: [
       {{#lint}}

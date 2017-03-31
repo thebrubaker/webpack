@@ -1,13 +1,10 @@
 .DS_Store
 node_modules/
 dist/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-{{#unit}}
+npm-debug.log
+yarn-error.log
 test/unit/coverage
-{{/unit}}
-{{#e2e}}
 test/e2e/reports
 selenium-debug.log
-{{/e2e}}
+.env.json
+.firebaserc

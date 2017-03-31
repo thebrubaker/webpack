@@ -3,7 +3,7 @@
 // we are also using it with karma-webpack
 //   https://github.com/webpack/karma-webpack
 
-var webpackConfig = require('../../build/webpack.test.conf'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+var webpackConfig = require('../../build/webpack.test.conf')
 
 module.exports = function (config) {
   config.set({
@@ -14,20 +14,23 @@ module.exports = function (config) {
     browsers: ['PhantomJS'],
     frameworks: ['mocha', 'sinon-chai'],
     reporters: ['spec', 'coverage'],
-    files: ['./index.js'],
+    files: [
+      '../../node_modules/babel-polyfill/dist/polyfill.js',
+      './index.js'
+    ],
     preprocessors: {
       './index.js': ['webpack', 'sourcemap']
     },
     webpack: webpackConfig,
     webpackMiddleware: {
-      noInfo: true{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+      noInfo: true
     },
     coverageReporter: {
       dir: './coverage',
       reporters: [
         { type: 'lcov', subdir: '.' },
-        { type: 'text-summary' }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+        { type: 'text-summary' }
       ]
-    }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    }
+  })
+}

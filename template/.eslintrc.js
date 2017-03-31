@@ -21,6 +21,11 @@ module.exports = {
     'html'
   ],
   {{#if_eq lintConfig "airbnb"}}
+  globals: {
+    'app': true,
+    'error': true,
+    'env': true
+  },
   // check if imports actually resolve
   'settings': {
     'import/resolver': {
