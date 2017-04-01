@@ -1,6 +1,3 @@
-import FirebaseAuthDriver from './drivers/firebase-auth-driver'
-import LaravelSearchDriver from './drivers/laravel-auth-driver'
-
 export default class AuthService {
 
   /**

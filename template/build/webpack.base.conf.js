@@ -23,26 +23,20 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      {{#if_eq build "standalone"}}
-      'vue$': 'vue/dist/vue.esm.js',
-      {{/if_eq}}
-      '@': resolve('src')
+      'app': resolve('src/bootstrap/app'),
+      'assets': resolve('src/assets'),
+      'bootstrap': resolve('src/bootstrap'),
+      'drivers': resolve('src/app/drivers'),
+      'components': resolve('src/components'),
+      'layouts': resolve('src/components/layouts'),
+      'pages': resolve('src/pages'),
+      'services': resolve('src/app/services'),
+      'src': resolve('src'),
+      'store': resolve('src/store'),
+      'routes': resolve('src/routes'),
+      'utilities': resolve('src/utilities'),
+      'vue$': 'vue/dist/vue.esm.js'
     }
-  },
-  alias: {
-    'app': resolve('src/bootstrap/app'),
-    'assets': resolve('src/assets'),
-    'bootstrap': resolve('src/bootstrap'),
-    'drivers': resolve('src/app/drivers'),
-    'components': resolve('src/components'),
-    'layouts': resolve('src/components/layouts'),
-    'pages': resolve('src/pages'),
-    'services': resolve('src/app/services'),
-    'src': resolve('src'),
-    'store': resolve('src/store'),
-    'routes': resolve('src/routes'),
-    'utilities': resolve('src/utilities'),
-    'vue$': 'vue/dist/vue.esm.js'
   },
   plugins: [
     new webpack.ProvidePlugin({
